@@ -14,14 +14,14 @@ let newRecipes =
   title: "Hamburger",
   level: "Amateur Chef",
   ingridients: ["ham", "buns", "salad", "pickles", "tomato"],
-  cuisine:"American",
+  cuisine: "American",
   dishType: "main_course",
   image: "https://bit.ly/3NrcDSh",
   duration: 40,
   creator: 'Shirin',
 }
 
-// Connection to the database "recipe-app"
+//Connection to the database "recipe-app"
 mongoose
   .connect(MONGODB_URI)
   .then(x => {
@@ -34,6 +34,11 @@ mongoose
     return numOne
     // Run your code here, after you have insured that the connection was made
   })
+  .then((result) => {
+    console.log(result.title)
+    const dataimp = Recipe.insertMany(data)
+  })
+
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
