@@ -31,15 +31,24 @@ mongoose
   })
   .then(() => {
     const numOne = Recipe.create(newRecipes);
-    return numOne
+    return numOne;
     // Run your code here, after you have insured that the connection was made
   })
   .then((result) => {
     console.log(result.title)
-    const dataimp = Recipe.insertMany(data)
+    Recipe.insertMany(data);
   })
-
+  .then(() => {
+    const filter = { title: "Rigatoni alla Genovese" };
+    const update = { duration: 100 };
+    Recipe.findOneAndUpdate(filter, update, { new: true });
+    console.log("success!");
+  })
+  .then(() => {
+    Recipe.findByIdAndDelete("6635af13d45b0e5a208941136");
+  })
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
 
+  mongoose.connection.close()
