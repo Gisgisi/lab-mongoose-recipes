@@ -3,34 +3,34 @@ const Schema = mongoose.Schema;
 
 const recipeSchema = new Schema({
   // TODO: write the schema
-  title:{
+  title: {
     type: String,
     required: true,
     unique: true,
   },
-  level:{
-    type:String,
-    enum: ['Easy Peasy' - 'Amateur Chef' - 'UltraPro Chef']
+  level: {
+    type: String,
+    enum: ['Easy Peasy', 'Amateur Chef', 'UltraPro Chef']
   },
-  ingredients:[String],
-  cuisine:{
+  ingredients: [String],
+  cuisine: {
     type: String,
     required: true,
   },
-  dishType:{
+  dishType: {
     type: String,
-    enum:['breakfast', 'main_course', 'soup', 'snack', 'drink', 'dessert','other']
+    enum: ['breakfast', 'main_course', 'soup', 'snack', 'drink', 'dessert', 'other']
   },
-  image:{
+  image: {
     type: String,
     default: "https://images.media-allrecipes.com/images/75131.jpg",
   },
-  duration:{
+  duration: {
     type: Number,
-    min:0,
+    min: 0,
   },
   creator: String,
-  created:{
+  created: {
     type: Date,
     default: Date.now
   }
